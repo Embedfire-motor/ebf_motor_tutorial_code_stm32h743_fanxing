@@ -16,43 +16,48 @@
   */  
 #include "stm32h7xx.h"
 #include "main.h"
-#include "./led/bsp_led.h"
 #include "./delay/core_delay.h" 
-#include "./usart/bsp_debug_usart.h"
 #include "./tim/bsp_advance_tim.h"
+#include "./key/bsp_key.h" 
 
-extern __IO uint16_t IC2Value;
-extern __IO uint16_t IC1Value;
-extern __IO float DutyCycle;
-extern __IO float Frequency;
+extern __IO uint16_t ChannelPulse;
 
-void Delay(uint32_t times)
-{
-    int x = 0, y = 0;
-    for(;x < 1000; x++)
-    {
-        for(;y < times; y++);
-    }
-}
 /**
   * @brief  主函数
   * @param  无
   * @retval 无
   */
-int main(void)
-{  
-	/* 系统时钟初始化成480MHz */
+int main(void) 
+{
+	/* 初始化系统时钟为168MHz */
 	SystemClock_Config();
-	/* 初始化串口 */
-	DEBUG_USART_Config();
-  /* 初始化基本定时器定时，1ms产生一次中断 */
+	/* 初始化按键GPIO */
+	Key_GPIO_Config();
+    /* 初始化基本定时器定时，1s产生一次中断 */
 	TIMx_Configuration();
-	  
+  
 	while(1)
 	{ 
-		HAL_Delay(500);
-		printf("IC1Value = %d  IC2Value = %d ",IC1Value,IC2Value);
-		printf("占空比：%0.2f%%   频率：%0.2fHz\n",DutyCycle,Frequency);	
+		/* 扫描KEY1 */
+		if( Key_Scan(KEY1_GPIO_PORT,KEY1_PIN) == KEY_ON  )
+		{
+			/* 增大占空比 */
+			if(ChannelPulse<950)
+				ChannelPulse+=50;
+			else
+				ChannelPulse=1000;
+			__HAL_TIM_SetCompare(&TIM_TimeBaseStructure,TIM_CHANNEL_1,ChannelPulse);
+		}   
+		/* 扫描KEY2 */
+		if( Key_Scan(KEY2_GPIO_PORT,KEY2_PIN) == KEY_ON  )
+		{
+			/* 减小占空比 */
+			if(ChannelPulse>=50)
+				ChannelPulse-=50;
+			else
+				ChannelPulse=0;
+			__HAL_TIM_SetCompare(&TIM_TimeBaseStructure,TIM_CHANNEL_1,ChannelPulse);
+		}   		
 	}
 }
 
