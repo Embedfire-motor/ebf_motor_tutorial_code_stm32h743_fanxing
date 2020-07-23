@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:野火  STM32 H743 开发板  
+  * 实验平台:野火  STM32 F407 开发板  
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :http://firestm32.taobao.com
   *
@@ -86,7 +86,6 @@ void stepper_move_T( int32_t step, uint32_t accel, uint32_t decel, uint32_t spee
 		/*根据步数和正负判断*/
 		if(step == 0)
 		{
-
 				return ;
 		}
 		else if(step < 0)//逆时针
@@ -226,12 +225,12 @@ void speed_decision()
 				case STOP:
 						step_count = 0;
 						rest = 0;
-					  status.running = FALSE;
 
 						// 关闭通道
 						TIM_CCxChannelCmd(MOTOR_PUL_TIM, MOTOR_PUL_CHANNEL_x, TIM_CCx_DISABLE);        
 						__HAL_TIM_CLEAR_FLAG(&TIM_TimeBaseStructure, MOTOR_TIM_FLAG_CCx);
 
+						status.running = FALSE;
 						break;
 				/*步进电机加速状态*/
 				case ACCEL:
@@ -282,8 +281,6 @@ void speed_decision()
 						if(srd.accel_count >= 0)
 						{
 							srd.run_state = STOP;
-							status.running = FALSE;
-
 						}
 						break;
 			}

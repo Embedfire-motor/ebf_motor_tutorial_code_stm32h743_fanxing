@@ -5,7 +5,6 @@
 #include "./stepper/bsp_stepper_init.h"
 #include "math.h"
 
-
 //梯形加减速相关变量
 typedef struct {
   //电机运行状态
@@ -39,7 +38,8 @@ struct GLOBAL_FLAGS {
 
 #define FALSE             0
 #define TRUE              1
-
+#define CW                0 // 顺时针
+#define CCW               1 // 逆时针
 
 /*电机速度决策中的四个状态*/
 #define STOP              0 // 停止状态
@@ -49,7 +49,7 @@ struct GLOBAL_FLAGS {
 
 /*频率相关参数*/
 //定时器实际时钟频率为：240MHz/(TIM_PRESCALER+1)
-//240/(23+1)=1Mhz
+//168/(5+1)=28Mhz
 //具体需要的频率可以自己计算
 #define TIM_PRESCALER      23 
 #define T1_FREQ           (SystemCoreClock/(TIM_PRESCALER+1)) // 频率ft值

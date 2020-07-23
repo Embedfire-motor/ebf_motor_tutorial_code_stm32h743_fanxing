@@ -195,7 +195,7 @@ void Usart_SendByte(char ch)
 extern unsigned char UART_RxPtr;
 void DEBUG_USART_IRQHandler(void)
 {	
-  unsigned char data;
+    unsigned char data;
     
 	if(__HAL_UART_GET_FLAG( &UartHandle, UART_FLAG_RXNE ) != RESET)
 	{	
@@ -242,9 +242,9 @@ void DEBUG_USART_IRQHandler(void)
 						}
 					}
 			}
-		(&UartHandle)->Instance->RQR = (&UartHandle)->Instance->RQR | (1<<3);
+    
     }	 
-  HAL_UART_IRQHandler(&UartHandle);
+
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

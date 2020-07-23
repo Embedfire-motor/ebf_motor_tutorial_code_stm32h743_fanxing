@@ -8,14 +8,13 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:野火  STM32 H743 开发板  
+  * 实验平台:野火  STM32 F407 开发板  
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :http://firestm32.taobao.com
   *
   ******************************************************************************
   */
 #include "./stepper/bsp_stepper_init.h"
-#include "./stepper/bsp_stepper_T_speed.h"
 #include "./delay/core_delay.h"   
 #include "stm32h7xx.h"
 #include "math.h"
@@ -100,9 +99,8 @@ void TIM_PWMOUTPUT_Config(void)
 	/* 累计 TIM_Period个后产生一个更新或者中断*/		
   //当定时器从0计数到10000，即为10000次，为一个定时周期
 	TIM_TimeBaseStructure.Init.Period = TIM_PERIOD; 
-	//定时器时钟源TIMxCLK = 2 * PCLK1  
-	//				PCLK1 = HCLK / 4 
-	//				=> TIMxCLK=HCLK/2=SystemCoreClock/2=240MHz
+	// 通用控制定时器时钟源TIMxCLK = HCLK/2	=	84MHz 
+	// 高级控制定时器时钟源TIMxCLK = HCLK		=	168MHz 
 	// 设定定时器频率为=TIMxCLK/(TIM_Prescaler+1)
   TIM_TimeBaseStructure.Init.Prescaler = TIM_PRESCALER;                
 	

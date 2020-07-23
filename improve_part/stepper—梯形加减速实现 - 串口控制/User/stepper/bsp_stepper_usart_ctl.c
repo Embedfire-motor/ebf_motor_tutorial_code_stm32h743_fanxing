@@ -8,7 +8,7 @@
   ******************************************************************************
   * @attention
   *
-  * 实验平台:野火  STM32 H743 开发板  
+  * 实验平台:野火  STM32 F407 开发板  
   * 论坛    :http://www.firebbs.cn
   * 淘宝    :http://firestm32.taobao.com
   *
@@ -203,20 +203,16 @@ void DealSerialData(void)
             printf("\n\r电机正在运行...");
         while(status.running == TRUE)
         {
-					printf("running=%X,TRUE=%x, ==%x \r\n",status.running,TRUE,(status.running == TRUE));
+					HAL_Delay(1);
           if(status.out_ena != TRUE)
           break;
         };
-				printf("running=%X,TRUE=%x, ==%x \r\n",status.running,TRUE,(status.running == TRUE));
         if(status.out_ena == TRUE)
         {
           printf("OK\n\r");
           ShowData(stepPosition, accel_val, decel_val, speed, steps);  
         }
-
       }
-
-      
     }
 }
 
