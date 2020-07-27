@@ -103,8 +103,8 @@ void TIM_PWMOUTPUT_Config(void)
 	//定时器时钟源TIMxCLK = 2 * PCLK1  
 	//				PCLK1 = HCLK / 4 
 	//				=> TIMxCLK=HCLK/2=SystemCoreClock/2=240MHz
-	// 设定定时器频率为=TIMxCLK/(TIM_Prescaler+1)=500KHz
-	TIM_StepperHandle.Init.Prescaler = 480-1;                
+	// 设定定时器频率为=TIMxCLK/(TIM_Prescaler+1)=2MHz
+	TIM_StepperHandle.Init.Prescaler = 120-1;                
 
 	/*计数方式*/
 	TIM_StepperHandle.Init.CounterMode = TIM_COUNTERMODE_UP;            

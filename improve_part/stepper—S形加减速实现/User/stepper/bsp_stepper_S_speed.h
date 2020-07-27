@@ -43,7 +43,7 @@ extern SpeedCalc_TypeDef Speed ;
 //定时器实际时钟频率为：240MHz/(TIM_PRESCALER+1)
 //240/(240)=1Mhz
 //具体需要的频率可以自己计算
-#define TIM_PRESCALER         240-1 
+#define TIM_PRESCALER         60-1 
 #define T1_FREQ               (SystemCoreClock/2/(TIM_PRESCALER+1)) // 频率ft值
 
 
