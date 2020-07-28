@@ -77,9 +77,9 @@ static void TIM_Encoder_Init(void)
   
   /* 定时器初始化设置 */
   TIM_EncoderHandle.Instance = ENCODER_TIM;
-  TIM_EncoderHandle.Init.Prescaler = ENCODER_TIM_PRESCALER;
+  TIM_EncoderHandle.Init.Prescaler = ENCODER_TIM_PRESCALER-1;
   TIM_EncoderHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
-  TIM_EncoderHandle.Init.Period = ENCODER_TIM_PERIOD;
+  TIM_EncoderHandle.Init.Period = ENCODER_TIM_PERIOD-1;
   TIM_EncoderHandle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   TIM_EncoderHandle.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   

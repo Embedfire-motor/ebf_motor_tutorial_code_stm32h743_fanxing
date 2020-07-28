@@ -103,10 +103,10 @@ void Stepper_Speed_Ctrl(void)
 
     /* 对计算得出的期望值取绝对值 */
     cont_val  = fabsf(cont_val);
-		if(cont_val > 0)
+		if(cont_val > 0.5)
 		{
-			/* 计算比较计数器的值 *///   1M           1         (2.6667  *     50) = 133.333
-			OC_Pulse_num = ((uint16_t)(T1_FREQ / (cont_val * PULSE_RATIO * SAMPLING_PERIOD))) >> 1;//3750
+			/* 计算比较计数器的值 */
+			OC_Pulse_num = ((uint16_t)(T1_FREQ / (cont_val * PULSE_RATIO * SAMPLING_PERIOD))) >> 1;
 		}
 		else
 		{

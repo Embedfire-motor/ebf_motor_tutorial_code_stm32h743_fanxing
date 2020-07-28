@@ -10,7 +10,7 @@
 /* 定时器溢出值 */		
 #define ENCODER_TIM_PERIOD                     65535
 /* 定时器预分频值 */
-#define ENCODER_TIM_PRESCALER                  1      
+#define ENCODER_TIM_PRESCALER                  2      
 
 /* 定时器中断 */
 #define ENCODER_TIM_IRQn                       TIM3_IRQn
@@ -31,7 +31,7 @@
 #define ENCODER_MODE                           TIM_ENCODERMODE_TI12
 
 /* 编码器接口输入捕获通道相位设置 */
-#define ENCODER_IC1_POLARITY                   TIM_ICPOLARITY_FALLING
+#define ENCODER_IC1_POLARITY                   TIM_ICPOLARITY_RISING
 #define ENCODER_IC2_POLARITY                   TIM_ICPOLARITY_RISING
 
 /* 编码器物理分辨率 */

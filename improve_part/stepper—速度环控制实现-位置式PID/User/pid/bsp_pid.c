@@ -39,7 +39,7 @@ void PID_param_init()
   pid.err_last=0.0;
   pid.integral=0.0;
   pid.Kp = 0.2;
-  pid.Ki = 0.045;
+  pid.Ki = 0.06;
   pid.Kd = 0.5;
 
   #if PID_ASSISTANT_EN

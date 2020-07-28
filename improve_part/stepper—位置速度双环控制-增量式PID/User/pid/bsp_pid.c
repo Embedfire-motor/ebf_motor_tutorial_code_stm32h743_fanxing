@@ -54,7 +54,7 @@ void PID_param_init()
 	speed_pid.err_next = 0.0;
   speed_pid.Kp = 0.001;
   speed_pid.Ki = 0.02;
-  speed_pid.Kd = 0.16;
+  speed_pid.Kd = 0.3;
 
   #if PID_ASSISTANT_EN
     float speed_pid_temp[3] = {speed_pid.Kp, speed_pid.Ki, speed_pid.Kd};

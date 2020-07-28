@@ -127,8 +127,11 @@ void Stepper_Ctrl(void)
 			/* 单位时间内的编码器脉冲数作为实际值传入速度环pid控制器 */
 			speed_cont_val += PID_realize(&speed_pid, (float)capture_per_unit);// 进行 PID 计算
 			/* 由于OC_Pulse_num为uint16_t变量，取速度环输出值的绝对值进行后续计算*/
+			
 			cont_val = fabsf(speed_cont_val);	
-			if(cont_val > 0 )
+			    /* 计算得出的期望值取绝对值 */
+
+			if(cont_val > 1)
 			{
 				/* 计算比较计数器的值 */
 				OC_Pulse_num = ((uint16_t)(TIM_STEP_FREQ / (cont_val * PULSE_RATIO * SAMPLING_PERIOD))) >> 1;

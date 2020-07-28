@@ -105,11 +105,11 @@ void Stepper_Speed_Ctrl(void)
     
     /* 计算得出的期望值取绝对值 */
     timer_delay = fabsf(cont_val);
-		if(cont_val > 5)
-		{    
-    /* 计算比较计数器的值 */
-    OC_Pulse_num = ((uint16_t)(TIM_STEP_FREQ / (timer_delay * PULSE_RATIO * SAMPLING_PERIOD))) >> 1;
-    }
+		if(timer_delay > 1)
+		{
+			/* 计算比较计数器的值 */
+			OC_Pulse_num = ((uint16_t)(TIM_STEP_FREQ / (timer_delay * PULSE_RATIO * SAMPLING_PERIOD))) >> 1;
+		}
 		else
 		{
 			OC_Pulse_num = 0;
