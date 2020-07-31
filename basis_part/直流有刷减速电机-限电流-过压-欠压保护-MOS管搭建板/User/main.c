@@ -42,9 +42,12 @@ int main(void)
 
   HAL_Init();
   
-	/* 初始化系统时钟为168MHz */
+	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
-  
+
+  /* 串口初始化 */
+  DEBUG_USART_Config();
+	
 	/* 初始化按键GPIO */
 	Key_GPIO_Config();
   
@@ -54,10 +57,6 @@ int main(void)
   /* 电机初始化 */
   motor_init();
   
-  /* 串口初始化 */
-  DEBUG_USART_Config();
-//	for(volatile int i=0x2fffff;i>0;i--){}
-
   /* ADC 始化 */
   ADC_Init();
   

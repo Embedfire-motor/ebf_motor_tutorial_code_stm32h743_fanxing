@@ -10,8 +10,8 @@
 #define ADC_VBUS_IRQ                    ADC_IRQn
 #define ADC_VBUS_IRQHandler             ADC_IRQHandler
 
-#define VREF                            3.3f     // 参考电压，理论上是3.3，可通过实际测量得3.258
-#define ADC_NUM_MAX                     2048       // ADC 转换结果缓冲区最大值
+#define VREF                            3.245f    // 参考电压，理论上是3.3，可通过实际测量得3.245
+#define ADC_NUM_MAX                     512       // ADC 转换结果缓冲区最大值
 
 #define GET_ADC_VDC_VAL(val)            ((float)val/(float)65536.0*VREF)          // 得到电压值
   
@@ -44,11 +44,11 @@
 
 #define VBUS_ADC_CHANNEL                ADC_CHANNEL_9
 
-#define GET_VBUS_VAL(val)               (((float)val-(float)0.5) / (float)8.0 * (float)301.0)
+#define GET_VBUS_VAL(val)               (((float)val-(float)0.5) / (float)8.0 * (float)311.88)
 
 /*********************** AD模拟看门狗门限电压 ******************/
-#define VBUS_MAX                        15    // 电压最大值
-#define VBUS_MIN                        10    // 电压最小值
+#define VBUS_MAX                        26    // 电压最大值
+#define VBUS_MIN                        8    // 电压最小值
 
 #define VBUS_HEX_MAX                    ((VBUS_MAX/311.88*8.0+0.5)/VREF*65536)    // 电压最大值（测量电压是电源电压的1/31）31.0
 #define VBUS_HEX_MIN                    ((VBUS_MIN/311.88*8.0+0.5)/VREF*65536)    // 电压最小值（测量电压是电源电压的1/31）31.0

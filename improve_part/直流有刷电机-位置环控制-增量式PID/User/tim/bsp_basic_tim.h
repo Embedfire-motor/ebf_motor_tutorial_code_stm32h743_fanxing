@@ -12,8 +12,8 @@
 /* 累计 TIM_Period个后产生一个更新或者中断*/		
 	//当定时器从0计数到BASIC_PERIOD_COUNT-1，即为BASIC_PERIOD_COUNT次，为一个定时周期
 	
-//PID计算周期:60ms计算一次--频率17Hz
-#define COUNT_PERIOD	60
+//PID计算周期:25ms计算一次--频率40Hz
+#define COUNT_PERIOD	25
 
 #define BASIC_PERIOD_COUNT    (COUNT_PERIOD*100)
 

@@ -81,8 +81,8 @@ static void ADC_Mode_Config(void)
     // -------------------ADC Init 结构体 参数 初始化------------------------
     // ADC1
     ADC_Handle.Instance = CURR_ADC;
-    // 时钟为fpclk 4分频	
-    ADC_Handle.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV4;
+    // 时钟为fpclk 4分频,AD时钟60Mhz
+    ADC_Handle.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
     // ADC 分辨率
     ADC_Handle.Init.Resolution = ADC_RESOLUTION_16B;
     // 禁止扫描模式，多通道采集才需要	
@@ -221,16 +221,16 @@ int32_t get_curr_val(void)
   
   curr_adc_mean = adc_mean_sum / adc_mean_count;    // 保存平均值
   
-
-    adc_mean_count = 0;
-    adc_mean_sum = 0;
-    
-    if (flag < 17)
-    {
-      adc_offset = curr_adc_mean;    // 多次记录偏置电压，待系统稳定偏置电压才为有效值
-      flag += 1;
-    }
-    if(curr_adc_mean>=adc_offset)
+	adc_mean_count = 0;
+	adc_mean_sum = 0;
+	
+	if (flag < 10)
+	{
+		adc_offset = curr_adc_mean;    // 多次记录偏置电压，待系统稳定偏置电压才为有效值
+		flag += 1;
+	}
+	
+	if(curr_adc_mean>=adc_offset)
 	{
 		curr_adc_mean -= adc_offset;                     // 减去偏置电压
 	}else
