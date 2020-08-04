@@ -57,8 +57,6 @@ int main(void)
 	
 	while(1)
 	{
-		start_pwm_output();
-		set_bldcm_enable();
     /* 处理数据 */
     deal_serial_data();
 	}
