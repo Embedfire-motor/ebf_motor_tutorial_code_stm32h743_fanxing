@@ -75,7 +75,7 @@ typedef struct{
 //定时器实际时钟频率为：240MHz/TIM_PRESCALER
 //240/TIM_PRESCALER=30MHz
 //具体需要的频率可以自己计算
-#define TIM_PRESCALER                8
+#define TIM_PRESCALER                12
 // 定义定时器周期，输出比较模式周期设置为0xFFFF
 #define TIM_PERIOD                   0xFFFF
 

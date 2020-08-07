@@ -36,7 +36,7 @@ int main(void)
 	SystemClock_Config();
 	/*初始化USART 配置模式为 115200 8-N-1，中断接收*/
 	DEBUG_USART_Config();
-	printf("欢迎使用野火 电机开发板 步进电机 第三象限圆弧插补 例程\r\n");
+	printf("欢迎使用野火 电机开发板 步进电机 第三象限顺时针圆弧插补 例程\r\n");
   /* 初始化时间戳 */
   HAL_InitTick(5);
 	/*按键初始化*/
@@ -51,7 +51,7 @@ int main(void)
     /* 顺时针圆弧 */
     if(Key_Scan(KEY2_GPIO_PORT, KEY2_PIN) == KEY_ON)
     {
-      Circular_InterPolation_CCW(0, -6400 * 10, -6400 * 10, 0, 1000);
+      Circular_InterPolation_CW(0, -6400 * 5, -6400 * 5, 0, 1000);
     }
 	}
 } 	

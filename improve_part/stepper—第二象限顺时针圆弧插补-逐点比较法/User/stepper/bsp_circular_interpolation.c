@@ -22,7 +22,7 @@ Axis_TypeDef axis;
 CircularInterpolation_TypeDef interpolation_para = {0};
 
 /**
-  * @brief  第二象限逆圆插补运动
+  * @brief  第二象限顺圆插补运动
   * @param  start_x：圆弧起点坐标X
   * @param  start_y：圆弧起点坐标Y
   * @param  stop_x：圆弧终点坐标X
@@ -30,7 +30,7 @@ CircularInterpolation_TypeDef interpolation_para = {0};
   * @param  speed：进给速度
   * @retval 无
   */
-void Circular_InterPolation_CCW(int32_t start_x, int32_t start_y, int32_t stop_x, int32_t stop_y, uint16_t speed)
+void Circular_InterPolation_CW(int32_t start_x, int32_t start_y, int32_t stop_x, int32_t stop_y, uint16_t speed)
 {
   /* 判断当前是否正在做插补运动 */
   if(interpolation_para.motionstatus != 0)
@@ -52,7 +52,7 @@ void Circular_InterPolation_CCW(int32_t start_x, int32_t start_y, int32_t stop_x
   /* 所需脉冲数是从起点到终点的脉冲数之和 */
   interpolation_para.endpoint_pulse = abs(stop_x - start_x) + abs(stop_y - start_y);
   
-  /* 第二象限逆圆，x轴和y轴逆转 */
+  /* 第二象限逆圆，x轴和y轴都正转 */
   interpolation_para.dir_x = CW;
   interpolation_para.dir_y = CW;
   MOTOR_DIR(step_motor[x_axis].dir_port, step_motor[x_axis].dir_pin, CW);
