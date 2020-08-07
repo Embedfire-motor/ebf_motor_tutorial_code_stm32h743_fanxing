@@ -66,18 +66,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   
   /* 记录上一步的进给活动轴 */
   last_axis = interpolation_para.active_axis;
-  
-  /* 判断是否完成插补 */
-  if(interpolation_para.endpoint_pulse == 0)
-  {
-    /* 关闭定时器 */
-    TIM_CCxChannelCmd(htim->Instance, step_motor[last_axis].pul_channel, TIM_CCx_DISABLE);
-    TIM_CCxChannelCmd(htim->Instance, step_motor[interpolation_para.active_axis].pul_channel, TIM_CCx_DISABLE);
-    __HAL_TIM_MOE_DISABLE(htim);
-    HAL_TIM_Base_Stop_IT(htim);
-    return;
-  }
-  
+
   /* 根据上一步的偏差，判断的进给方向，并计算下一步的偏差 */
   if(interpolation_para.deviation >= 0)
   {
@@ -98,7 +87,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     TIM_CCxChannelCmd(htim->Instance, step_motor[last_axis].pul_channel, TIM_CCx_DISABLE);
     TIM_CCxChannelCmd(htim->Instance, step_motor[interpolation_para.active_axis].pul_channel, TIM_CCx_ENABLE);
   }
-  
+    
+  /* 判断是否完成插补 */
+  if(interpolation_para.endpoint_pulse == 0)
+  {
+    /* 关闭定时器 */
+    TIM_CCxChannelCmd(htim->Instance, step_motor[last_axis].pul_channel, TIM_CCx_DISABLE);
+    TIM_CCxChannelCmd(htim->Instance, step_motor[interpolation_para.active_axis].pul_channel, TIM_CCx_DISABLE);
+    __HAL_TIM_MOE_DISABLE(htim);
+    HAL_TIM_Base_Stop_IT(htim);
+    return;
+  }
+	
   /* 进给总步数减1 */
   interpolation_para.endpoint_pulse--;
 }
