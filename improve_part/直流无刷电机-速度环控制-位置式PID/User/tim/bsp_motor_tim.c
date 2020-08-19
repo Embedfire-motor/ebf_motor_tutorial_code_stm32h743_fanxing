@@ -462,7 +462,7 @@ void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim)
     motor_drive.timeout = 0;
   }
 
-  if(get_bldcm_direction() != MOTOR_FWD)
+  if(get_bldcm_direction() == MOTOR_FWD)
   {
     step = 7 - step;        // 根据换向表的规律可知： REV = 7 - FWD;
   }
