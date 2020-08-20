@@ -332,16 +332,16 @@ static void update_motor_speed(uint8_t dir_in, uint32_t time)
   float f = 0;
 
   /* 计算速度：
-     电机每转一圈共用24个脉冲，(1.0/(84000000.0/128.0)为计数器的周期，(1.0/(84000000.0/128.0) * time)为时间长。
+     电机每转一圈共用12个脉冲，(1.0/(240000000.0/128.0)为计数器的周期，(1.0/(84000000.0/128.0) * time)为时间长。
   */
-//  motor_drive.speed_group[count++] = (1.0 / 24.0) / ((1.0 / (240000000.0 / HALL_PRESCALER_COUNT) * time) / 60.0);
+
   if (time == 0)
     motor_drive.speed_group[count++] = 0;
   else
   {
-    f = (1.0 / (240000000.0 / HALL_PRESCALER_COUNT) * time);
-    f = (1.0 / 24.0) / (f  / 60.0);
-    motor_drive.speed_group[count++] = 250000/time;
+    f = (1.0f / (240000000.0f / HALL_PRESCALER_COUNT) * time);
+    f = (1.0f / 12.0f) / (f  / 60.0f);
+    motor_drive.speed_group[count++] = f;
   }
 
   if (count >= SPEED_FILTER_NUM)
