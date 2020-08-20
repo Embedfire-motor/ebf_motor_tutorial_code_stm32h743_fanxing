@@ -341,7 +341,7 @@ static void update_motor_speed(uint8_t dir_in, uint32_t time)
   {
     f = (1.0f / (240000000.0f / HALL_PRESCALER_COUNT) * time);
     f = (1.0f / 12.0f) / (f  / 60.0f);
-    motor_drive.speed_group[count++] = 250000/time;
+    motor_drive.speed_group[count++] = f;
   }
   if (count >= SPEED_FILTER_NUM)
   {
