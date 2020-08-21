@@ -80,7 +80,7 @@ static void ADC_Mode_Config(void)
   // ADC1
   ADC_Handle.Instance = ADCx;
   // 时钟为fpclk 4分频,AD时钟60Mhz
-  ADC_Handle.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV1;
+  ADC_Handle.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   // ADC 分辨率
   ADC_Handle.Init.Resolution = ADC_RESOLUTION_16B;
   // 扫描模式	Z
