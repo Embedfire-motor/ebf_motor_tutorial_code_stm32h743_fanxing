@@ -61,7 +61,7 @@ int main(void)
   
   printf("野火直流无刷电机按键控制例程\r\n");
 
-  /* 电机初始化 */
+	/* 电机初始化 */
   bldcm_init();
 	
 	while(1)
