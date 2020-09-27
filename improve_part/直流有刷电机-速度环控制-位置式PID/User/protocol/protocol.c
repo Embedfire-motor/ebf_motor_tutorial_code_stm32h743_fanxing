@@ -181,8 +181,8 @@ static uint8_t protocol_frame_parse(uint8_t *data, uint16_t *data_len)
     /* 还未找到帧头，需要进行查找*/
     if (0 == parser.found_frame_head)
     {
-        /* 同步头为四字节，可能存在未解析的数据中最后一个字节刚好为同步头第一个字节的情况，
-           因此查找同步头时，最后一个字节将不解析，也不会被丢弃*/
+        /* 同步头为四字节，可能存在未解析的数据中最后三个字节刚好为同步头前三个字节的情况，
+           因此查找同步头时，最后三个字节将不解析，也不会被丢弃*/
         header_oft = recvbuf_find_header(parser.recv_ptr, PROT_FRAME_LEN_RECV, parser.r_oft, need_to_parse_len);
         if (0 <= header_oft)
         {
