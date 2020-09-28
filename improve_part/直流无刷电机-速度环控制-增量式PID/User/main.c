@@ -4,7 +4,7 @@
   * @author  fire
   * @version V1.0
   * @date    2020-xx-xx
-  * @brief   TIM-定时器输出SPWM
+  * @brief   直流无刷电机-速度环控制-增量式PID
   ******************************************************************
   * @attention
   *

@@ -4,7 +4,7 @@
   * @author  fire
   * @version V1.0
   * @date    2020-xx-xx
-  * @brief   TIM-定时器输出SPWM
+  * @brief   直流无刷电机-温度-电源电压保护
   ******************************************************************
   * @attention
   *
@@ -65,7 +65,7 @@ int main(void)
   
   printf("野火直流无刷电机按键控制例程\r\n");
 
-  /* 电机初始化 */
+	/* 电机初始化 */
   bldcm_init();
 	
 	while(1)

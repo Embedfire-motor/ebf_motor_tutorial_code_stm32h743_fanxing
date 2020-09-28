@@ -40,7 +40,7 @@ void DEBUG_USART_Config(void)
   HAL_UART_Init(&UartHandle);
     
   /* 使能串口空闲断 */
-  __HAL_UART_ENABLE_IT(&UartHandle, USART_IT_RXNE);
+  // __HAL_UART_ENABLE_IT(&UartHandle, USART_IT_RXNE);
   
   HAL_NVIC_SetPriority(DEBUG_USART_IRQ, 0, 0);	// 抢占优先级0，子优先级1
   HAL_NVIC_EnableIRQ(DEBUG_USART_IRQ );		      // 使能USART1中断通道 

@@ -71,8 +71,8 @@ int main(void)
   
   set_motor_speed(ChannelPulse);
   set_motor_disable();    // 禁用电机
-  
-  printf("野火直流有刷电机电流读取实验\r\n");
+  LED1_TOGGLE;
+//  printf("野火直流有刷电机电流读取实验\r\n");
 	
 	while(1)
 	{
