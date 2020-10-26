@@ -12,7 +12,7 @@
 #define STEP_ANGLE				1.8f                        //步进电机的步距角 单位：度
 #define FSPR              ((float)(360.0f/STEP_ANGLE))//步进电机的一圈所需脉冲数  200
 
-#define MICRO_STEP        3          				        //细分器细分数 
+#define MICRO_STEP        32          				        //细分器细分数 
 #define SPR               (FSPR*MICRO_STEP)           //细分后一圈所需脉冲数  6400
 
 #define PULSE_RATIO       ((float)(SPR/ENCODER_TOTAL_RESOLUTION))//步进电机单圈脉冲数与编码器单圈脉冲的比值 6400/(600*4)=2.6667
