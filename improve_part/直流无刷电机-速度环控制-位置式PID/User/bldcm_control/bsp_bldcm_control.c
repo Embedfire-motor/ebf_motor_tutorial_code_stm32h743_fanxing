@@ -57,7 +57,8 @@ static void sd_gpio_config(void)
   
 	/*调用库函数，使用上面配置的GPIO_InitStructure初始化GPIO*/
   HAL_GPIO_Init(SHUTDOWN_GPIO_PORT, &GPIO_InitStruct);
-  
+	/* 延迟50ms，H743开Cache后速度会过快，未满足SD引脚时序。加入操作系统时需格外注意这个延时函数是否生效或阻塞这里 */
+	HAL_Delay(50);
   BLDCM_ENABLE_SD();     // 默认开启
 }
 

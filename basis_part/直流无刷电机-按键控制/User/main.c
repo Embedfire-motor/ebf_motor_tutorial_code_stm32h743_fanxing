@@ -38,7 +38,8 @@ int main(void)
 {
   __IO uint16_t ChannelPulse = PWM_MAX_PERIOD_COUNT/10;
   uint8_t i = 0;
-  
+  /* HAL 初始化 */
+  HAL_Init();
 	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
   

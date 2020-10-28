@@ -40,7 +40,8 @@
 #define  DWT_CR      *(__IO uint32_t *)0xE0001000
 #define  DWT_CYCCNT  *(__IO uint32_t *)0xE0001004
 #define  DEM_CR      *(__IO uint32_t *)0xE000EDFC
-
+#define  DWT_LAR     *(volatile uint32_t *)0xE0001FB0
+#define  DWT_LAR_UNLOCK          (uint32_t)0xC5ACCE55
 
 #define  DEM_CR_TRCENA                   (1 << 24)
 #define  DWT_CR_CYCCNTENA                (1 <<  0)
@@ -54,9 +55,10 @@
   */
 HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
+
     /* 使能DWT外设 */
     DEM_CR |= (uint32_t)DEM_CR_TRCENA;                
-
+		DWT_LAR        |= DWT_LAR_UNLOCK;    //新添加的代码
     /* DWT CYCCNT寄存器计数清0 */
     DWT_CYCCNT = (uint32_t)0u;
 

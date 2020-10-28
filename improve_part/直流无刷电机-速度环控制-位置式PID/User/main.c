@@ -41,7 +41,7 @@ int main(void)
 {
   int16_t target_speed = 1500;
   uint8_t i = 0;
-  
+
 	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
   
@@ -64,7 +64,7 @@ int main(void)
   
   /* 电机初始化 */
   bldcm_init();
-  
+
   /* 设置目标速度 */
   set_pid_target(target_speed);
 
@@ -83,7 +83,6 @@ int main(void)
     {
       /* 使能电机 */
       set_bldcm_enable();
-      
     #if defined(PID_ASSISTANT_EN) 
       set_computer_value(SEND_START_CMD, CURVES_CH1, NULL, 0);               // 同步上位机的启动按钮状态
     #endif

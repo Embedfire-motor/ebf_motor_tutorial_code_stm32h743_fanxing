@@ -38,9 +38,11 @@ int main(void)
 {
   __IO uint16_t ChannelPulse = PWM_PERIOD_COUNT/10;
   
+	HAL_Init();
+
 	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
-  
+	
 	/* 初始化按键GPIO */
 	Key_GPIO_Config();
   

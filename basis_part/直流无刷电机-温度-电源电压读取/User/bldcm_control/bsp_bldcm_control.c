@@ -94,6 +94,8 @@ motor_dir_t get_bldcm_direction(void)
 void set_bldcm_enable(void)
 {
   BLDCM_ENABLE_SD();
+	/* 延迟50ms，H743开Cache后速度会过快，未满足SD引脚时序。加入操作系统时需格外注意这个延时函数是否生效或阻塞这里 */
+	HAL_Delay(50);
   hall_enable();
 }
 
