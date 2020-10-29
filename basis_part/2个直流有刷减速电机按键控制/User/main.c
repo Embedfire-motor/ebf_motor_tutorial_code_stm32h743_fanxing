@@ -4,7 +4,7 @@
   * @author  fire
   * @version V1.0
   * @date    2020-xx-xx
-  * @brief   TIM-定时器输出SPWM
+  * @brief   直流有刷减速电机-按键控制-双电机
   ******************************************************************
   * @attention
   *
@@ -38,7 +38,7 @@ int main(void)
   __IO uint16_t ChannelPulse2 = 0;
   uint8_t i = 0;
   
-	/* 初始化系统时钟为168MHz */
+	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
   
 	/* 初始化按键GPIO */

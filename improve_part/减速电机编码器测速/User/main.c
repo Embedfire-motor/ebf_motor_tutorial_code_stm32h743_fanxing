@@ -48,7 +48,7 @@ int main(void)
   
   /* HAL库初始化*/
   HAL_Init();
-	/* 初始化系统时钟为168MHz */
+	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
   /* 配置1ms时基为SysTick */
   HAL_InitTick(5);

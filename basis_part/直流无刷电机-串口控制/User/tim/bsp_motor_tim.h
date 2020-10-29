@@ -16,9 +16,9 @@ extern TIM_HandleTypeDef  htimx_bldcm;
 #define PWM_MAX_PERIOD_COUNT    (PWM_PERIOD_COUNT - 100)
 
 /* 定时器时钟源TIMxCLK = 2 * PCLK1  
-					PCLK1 = HCLK / 4 
+					PCLK1 = HCLK / 2
 					=> TIMxCLK=HCLK/2=SystemCoreClock/2=240MHz
-	 设定定时器频率为=TIMxCLK/(PWM_PRESCALER_COUNT+1)/PWM_PERIOD_COUNT = 14.28KHz*/
+	 设定定时器频率为=TIMxCLK/(PWM_PRESCALER_COUNT)/PWM_PERIOD_COUNT = 14.28KHz*/
 #define PWM_PRESCALER_COUNT     (3)
 
 /* TIM8通道1输出引脚 */
@@ -66,13 +66,13 @@ extern TIM_HandleTypeDef  htimx_bldcm;
 extern TIM_HandleTypeDef htimx_hall;
 
 /* 累计 TIM_Period个后产生一个更新或者中断		
-	当定时器从0计数到4999，即为5000次，为一个定时周期 */
+	当定时器从0计数到9999，即为10000次，为一个定时周期 */
 #define HALL_PERIOD_COUNT     (10000)
 
 /* 定时器时钟源TIMxCLK = 2 * PCLK1  
-					PCLK1 = HCLK / 4 
+					PCLK1 = HCLK / 2
 					=> TIMxCLK=HCLK/2=SystemCoreClock/2=240MHz
-	 设定定时器频率为 = TIMxCLK / (PWM_PRESCALER_COUNT + 1) / PWM_PERIOD_COUNT = 10Hz
+	 设定定时器频率为 = TIMxCLK / (PWM_PRESCALER_COUNT ) / PWM_PERIOD_COUNT = 10Hz
    周期 T = 100ms */
 #define HALL_PRESCALER_COUNT     (2400)
 

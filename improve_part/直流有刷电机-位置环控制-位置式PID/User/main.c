@@ -40,7 +40,7 @@ int main(void)
   /* HAL 库初始化 */
   HAL_Init();
   
-	/* 初始化系统时钟为168MHz */
+	/* 初始化系统时钟为480MHz */
 	SystemClock_Config();
   
 	/* 初始化按键 GPIO */
